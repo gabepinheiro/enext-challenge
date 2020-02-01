@@ -1,47 +1,47 @@
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: ["@babel/polyfill", "./src/index.js"],
+  entry: ['@babel/polyfill', './src/index.js'],
   plugins: [
     new HtmlWebpackPlugin({
-      title: "",
-      template: "./src/index.html",
+      title: '',
+      template: './src/index.html',
       inject: true,
       minify: {
         removeComments: true,
-        collapseWhitespace: false
-      }
-    })
+        collapseWhitespace: false,
+      },
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.(svg|png|jpg|gif)$/,
         use: {
-          loader: "file-loader",
+          loader: 'file-loader',
           options: {
-            name: "[name].[hash].[ext]",
-            outputPath: "imgs"
-          }
-        }
+            name: '[name].[hash].[ext]',
+            outputPath: 'imgs',
+          },
+        },
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-proposal-object-rest-spread"]
-          }
-        }
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-proposal-object-rest-spread'],
+          },
+        },
       },
       {
         test: /\.(html)$/,
         use: {
-          loader: "html-loader"
-        }
-      }
-    ]
-  }
+          loader: 'html-loader',
+        },
+      },
+    ],
+  },
 };

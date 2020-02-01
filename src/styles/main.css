@@ -1,0 +1,23 @@
+/* settings */
+@import './settings/colors.css';
+@import './settings/fonts.css';
+
+
+/* generic */
+@import './generic/reset.css';
+
+/* base */
+@import './base/elements.css';
+
+/* containers */
+@import './containers/wrapperChallenge.css';
+@import './containers/form.css';
+@import './containers/fieldsContainer.css';
+@import './containers/card.css';
+
+/* components */
+@import './components/fieldBox.css';
+@import './components/select.css';
+@import './components/btn.css';
+
+/* @import './components/' */

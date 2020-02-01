@@ -1,0 +1,18 @@
+.card__containerFigure{
+  width:500px;
+  height: 300px;
+  position: relative;
+}
+
+.card__caption {
+  position: absolute;
+  bottom: 0;
+  left:15px;
+  bottom:15px;
+  font-size: 40px;
+  color: black;
+}
+
+.card__caption  span{
+    padding:20px;
+}

@@ -14,6 +14,7 @@
 @import './containers/form.css';
 @import './containers/fieldsContainer.css';
 @import './containers/card.css';
+@import './containers/figureContainer.css';
 
 /* components */
 @import './components/fieldBox.css';

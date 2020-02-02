@@ -11,6 +11,7 @@
 
 /* containers */
 @import './containers/wrapperChallenge.css';
+@import './containers/mainContent.css';
 @import './containers/form.css';
 @import './containers/fieldsContainer.css';
 @import './containers/card.css';

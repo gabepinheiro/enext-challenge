@@ -10,48 +10,54 @@
 
 <body>
   <div class="challenge">
-    <form class="form">
-      <h1 class="form__title">Dog API</h1>
-      <section class="form__fieldsContainer">
-        <div class="form__fieldBox">
-          <label for="nameDog">Nome:</label>
-          <input required type="text" id="nameDog" class="form__input" placeholder="Digite">
-        </div>
+    <main class="main-content">
+      <form class="form">
+        <h1 class="form__title">Dog API</h1>
+        <section class="form__fieldsContainer">
+          <div class="form__fieldBox">
+            <label for="nameDog">Nome:</label>
+            <input required type="text" id="nameDog" class="form__input" placeholder="Digite">
+          </div>
 
-        <div class="form__fieldBox">
-          <label for="breeds">Escolha a raça:</label>
-          <select name="somename" id="breeds" class="form__select" required>
+          <div class="form__fieldBox">
+            <label for="breeds">Escolha a raça:</label>
+            <select name="somename" id="breeds" class="form__select" required>
 
-          </select>
-        </div>
+            </select>
+          </div>
 
-        <div class="form__fieldBox">
-          <label for="colorFont">Cor da fonte:</label>
-          <select id="colorFont" class="form__select">
+          <div class="form__fieldBox">
+            <label for="colorFont">Cor da fonte:</label>
+            <select id="colorFont" class="form__select">
 
-          </select>
-        </div>
+            </select>
+          </div>
 
-        <div class="form__fieldBox">
-          <label for="font">Fonte:</label>
-          <select id="font" class="form__select">
+          <div class="form__fieldBox">
+            <label for="font">Fonte:</label>
+            <select id="font" class="form__select">
 
-          </select>
-        </div>
+            </select>
+          </div>
 
 
+        </section>
+
+        <button type="submit" class="form__button">Salvar</button>
+      </form>
+
+      <section class="card">
+        <figure class="card__containerFigure">
+          <img class="card__image" />
+          <figcaption class="card__caption">
+            <span></span>
+          </figcaption>
+        </figure>
       </section>
+    </main>
 
-      <button type="submit" class="form__button">Salvar</button>
-    </form>
+    <section class="myDogs">
 
-    <section class="card">
-      <figure class="card__containerFigure">
-        <img class="card__image" />
-        <figcaption class="card__caption">
-          <span></span>
-        </figcaption>
-      </figure>
     </section>
   </div>
 </body>

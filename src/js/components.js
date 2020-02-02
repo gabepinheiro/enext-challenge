@@ -1,3 +1,22 @@
+export const renderMyDogsList = listDogs => {
+  const markup = listDogs.map(dog => {
+    return `
+      <li class="myDogs__item">
+         <figure class="myDogs__figure">
+            <img src="${dog.img}" class="myDogs__image" />
+            <figcaption class="myDogs__caption">
+                <span style="font-family:${dog.styles.font}"class="${dog.styles.color}">
+                  ${dog.name}
+                </span>
+            </figcaption>
+         </figure>
+      </li>   
+    `;
+  });
+
+  return markup.join('');
+};
+
 export const selectBreeds = listBreed => {
   const markup = listBreed.map(item => {
     const option = `<option value="${item}">${item}</option>`;

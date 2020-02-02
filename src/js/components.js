@@ -5,7 +5,7 @@ export const selectBreeds = listBreed => {
   });
 
   // elSelect.innerHTML = `<optgroup>${markup}</optgroup>`;
-  return `<optgroup>${markup}</optgroup>`;
+  return `<option value="">Selecione</option>${markup}`;
 };
 
 export const selectFonts = () => {
@@ -22,7 +22,7 @@ export const selectFonts = () => {
   );
 
   // elSelect.innerHTML = `<optgroup>${markup}</optgroup>`;
-  return `<optgroup>${markup}</optgroup>`;
+  return `<option value="">Selecione</option>${markup}`;
 };
 
 export const selectColors = () => {
@@ -57,5 +57,5 @@ export const selectColors = () => {
   );
 
   // elSelect.innerHTML = `<optgroup>${markup}</optgroup>`;
-  return `<optgroup>${markup}</optgroup>`;
+  return `<option value="">Selecione</option>${markup}`;
 };

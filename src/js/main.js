@@ -1,9 +1,13 @@
 import * as api from './services/api';
 
+import saveLocalStorage from './utils';
+
 import { selectBreeds, selectFonts, selectColors } from './components';
 
 class Challenge {
   constructor() {
+    this.listMyDogs = localStorage.getItem('mydogs') || [];
+
     this.formEl = document.querySelector('.form');
     this.inputEl = document.querySelector('#nameDog');
     this.selectBreedsEl = document.querySelector('#breeds');
@@ -22,6 +26,26 @@ class Challenge {
     this.selectBreedsEl.innerHTML = selectBreeds(Object.keys(this.listBreeds));
     this.selectFontEl.innerHTML = selectFonts();
     this.selectColorFontEl.innerHTML = selectColors();
+  }
+
+  async save() {
+    const dog = {
+      name: this.inputEl.value,
+      img: this.imgElement.src,
+      styles: {
+        font: this.selectFontEl.value,
+        color: this.selectColorFontEl.value,
+      },
+      date: new Date(),
+    };
+
+    const newListMyDogs = [dog, ...this.listMyDogs];
+
+    const response = await saveLocalStorage('mydogs', newListMyDogs);
+
+    if (response) {
+      alert('Salvo com Sucesso');
+    }
   }
 
   handleChangeNameDog(name) {
@@ -46,6 +70,7 @@ class Challenge {
   addListeners() {
     this.formEl.addEventListener('submit', e => {
       e.preventDefault();
+      this.save();
     });
 
     this.inputEl.addEventListener('keyup', e => {

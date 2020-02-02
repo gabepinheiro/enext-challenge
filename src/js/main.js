@@ -13,14 +13,14 @@ class Challenge {
   constructor() {
     this.listMyDogs = JSON.parse(localStorage.getItem('mydogs')) || [];
 
-    this.formEl = document.querySelector('.form');
-    this.inputEl = document.querySelector('#nameDog');
-    this.selectBreedsEl = document.querySelector('#breeds');
-    this.selectColorFontEl = document.querySelector('#colorFont');
-    this.selectFontEl = document.querySelector('#font');
-    this.imgElement = document.querySelector('.card__image');
-    this.captionElement = document.querySelector('.card__caption span');
-    this.sectionMyDogs = document.querySelector('.myDogs__listContainer > ul');
+    this.$form = document.querySelector('.form');
+    this.$input = document.querySelector('#nameDog');
+    this.$breeds = document.querySelector('#breeds');
+    this.$colors = document.querySelector('#colorFont');
+    this.$fonts = document.querySelector('#font');
+    this.$cardImage = document.querySelector('.card__image');
+    this.$caption = document.querySelector('.card__caption span');
+    this.$ulMyDogs = document.querySelector('.myDogs__listContainer > ul');
   }
 
   async init() {
@@ -29,22 +29,22 @@ class Challenge {
     const response = await api.getBreeds();
     this.listBreeds = response;
 
-    this.selectBreedsEl.innerHTML = selectBreeds(Object.keys(this.listBreeds));
-    this.selectFontEl.innerHTML = selectFonts();
-    this.selectColorFontEl.innerHTML = selectColors();
+    this.$breeds.innerHTML = selectBreeds(Object.keys(this.listBreeds));
+    this.$fonts.innerHTML = selectFonts();
+    this.$colors.innerHTML = selectColors();
 
-    this.sectionMyDogs.innerHTML = renderMyDogsList(this.listMyDogs);
+    this.$ulMyDogs.innerHTML = renderMyDogsList(this.listMyDogs);
   }
 
   async save() {
-    this.sectionMyDogs.innerHTML = '';
+    this.$ulMyDogs.innerHTML = '';
 
     const dog = {
-      name: this.inputEl.value,
-      img: this.imgElement.src,
+      name: this.$input.value,
+      img: this.$cardImage.src,
       styles: {
-        font: this.selectFontEl.value,
-        color: this.selectColorFontEl.value,
+        font: this.$fonts.value,
+        color: this.$colors.value,
       },
       date: new Date(),
     };
@@ -59,50 +59,47 @@ class Challenge {
   }
 
   updateListMyDogs() {
-    this.sectionMyDogs.innerHTML = renderMyDogsList(this.listMyDogs);
+    this.$ulMyDogs.innerHTML = renderMyDogsList(this.listMyDogs);
   }
 
-  handleChangeNameDog(name) {
-    this.captionElement.innerText = name;
+  handleChangeNameDog(e) {
+    this.$caption.innerText = e.target.value;
   }
 
-  handleChangeColor(color) {
-    this.captionElement.setAttribute('class', '');
-    this.captionElement.classList.add(color);
+  handleChangeColor(e) {
+    this.$caption.setAttribute('class', '');
+    this.$caption.classList.add(e.target.value);
   }
 
-  handleChangeImageBreed(breed) {
-    api.getImageBreed(breed).then(data => {
-      this.imgElement.src = data.message;
-    });
+  async handleChangeImageBreed(e) {
+    const breed = e.target.value;
+
+    const image = await api.getImageBreed(breed);
+
+    this.$cardImage.src = image.message;
   }
 
-  handleChangeFont(font) {
-    this.captionElement.style.fontFamily = font;
+  handleChangeFont(e) {
+    this.$caption.style.fontFamily = e.target.value;
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.save();
   }
 
   addListeners() {
-    this.formEl.addEventListener('submit', e => {
-      e.preventDefault();
-      this.save();
-    });
+    this.$form.addEventListener('submit', e => this.handleSubmit(e));
 
-    this.inputEl.addEventListener('keyup', e => {
-      this.nameDog = e.target.value;
-      this.handleChangeNameDog(this.nameDog);
-    });
+    this.$input.addEventListener('keyup', e => this.handleChangeNameDog(e));
 
-    this.selectBreedsEl.addEventListener('change', e => {
-      this.handleChangeImageBreed(e.target.value);
-    });
+    this.$breeds.addEventListener('change', e =>
+      this.handleChangeImageBreed(e)
+    );
 
-    this.selectColorFontEl.addEventListener('change', e => {
-      this.handleChangeColor(e.target.value);
-    });
+    this.$colors.addEventListener('change', e => this.handleChangeColor(e));
 
-    this.selectFontEl.addEventListener('change', e => {
-      this.handleChangeFont(e.target.value);
-    });
+    this.$fonts.addEventListener('change', e => this.handleChangeFont(e));
   }
 }
 

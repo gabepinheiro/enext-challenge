@@ -33,11 +33,12 @@ class Challenge {
     this.selectFontEl.innerHTML = selectFonts();
     this.selectColorFontEl.innerHTML = selectColors();
 
-    console.log(this.selectBreedsEl.value);
     this.sectionMyDogs.innerHTML = renderMyDogsList(this.listMyDogs);
   }
 
   async save() {
+    this.sectionMyDogs.innerHTML = '';
+
     const dog = {
       name: this.inputEl.value,
       img: this.imgElement.src,
@@ -48,13 +49,17 @@ class Challenge {
       date: new Date(),
     };
 
-    const newListMyDogs = [dog, ...this.listMyDogs];
+    this.listMyDogs = [dog, ...this.listMyDogs];
 
-    const response = await saveLocalStorage('mydogs', newListMyDogs);
+    const response = await saveLocalStorage('mydogs', this.listMyDogs);
 
-    if (response) {
-      alert('Salvo com Sucesso');
-    }
+    if (response) alert('Salvo com Sucesso');
+
+    this.updateListMyDogs();
+  }
+
+  updateListMyDogs() {
+    this.sectionMyDogs.innerHTML = renderMyDogsList(this.listMyDogs);
   }
 
   handleChangeNameDog(name) {
@@ -97,7 +102,6 @@ class Challenge {
 
     this.selectFontEl.addEventListener('change', e => {
       this.handleChangeFont(e.target.value);
-      console.log(e.target.value);
     });
   }
 }

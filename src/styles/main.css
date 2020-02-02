@@ -21,6 +21,7 @@
 @import './components/select.css';
 @import './components/btn.css';
 @import './components/title.css';
+@import './components/legendImage.css';
 
 /* trumps */
 @import './trumps/colors.css';

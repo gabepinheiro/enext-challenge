@@ -26,6 +26,7 @@ class Challenge {
     this.selectBreedsEl.innerHTML = selectBreeds(Object.keys(this.listBreeds));
     this.selectFontEl.innerHTML = selectFonts();
     this.selectColorFontEl.innerHTML = selectColors();
+    console.log(this.selectBreedsEl.value);
   }
 
   async save() {

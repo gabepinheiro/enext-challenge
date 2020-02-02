@@ -2,7 +2,12 @@ import * as api from './services/api';
 
 import saveLocalStorage from './utils';
 
-import { selectBreeds, selectFonts, selectColors } from './components';
+import {
+  renderMyDogsList,
+  selectBreeds,
+  selectFonts,
+  selectColors,
+} from './components';
 
 class Challenge {
   constructor() {
@@ -15,6 +20,7 @@ class Challenge {
     this.selectFontEl = document.querySelector('#font');
     this.imgElement = document.querySelector('.card__image');
     this.captionElement = document.querySelector('.card__caption span');
+    this.sectionMyDogs = document.querySelector('.myDogs__listContainer > ul');
   }
 
   async init() {
@@ -26,7 +32,9 @@ class Challenge {
     this.selectBreedsEl.innerHTML = selectBreeds(Object.keys(this.listBreeds));
     this.selectFontEl.innerHTML = selectFonts();
     this.selectColorFontEl.innerHTML = selectColors();
+
     console.log(this.selectBreedsEl.value);
+    this.sectionMyDogs.innerHTML = renderMyDogsList(this.listMyDogs);
   }
 
   async save() {

@@ -1,0 +1,19 @@
+.colorFirst{
+  color: var(--color-first);
+}
+
+.colorSecond{
+  color: var(--color-second)
+}
+
+.colorThird{
+  color: var(--color-third)
+}
+
+.colorFourth{
+  color: var(--color-fourth)
+}
+
+.colorFifth{
+  color: var(--color-fifth)
+}

@@ -1,0 +1,19 @@
+.fontFirst{
+  font-family: var(--font-first);
+}
+
+.fontSecond {
+  font-family: var(--font-second);
+}
+
+.fontThrid{
+  font-family: var(--font-thrid);
+}
+
+.fontFourth{
+  font-family: var(--font-fourth);
+}
+
+.fontFifth{
+  font-family: var(--font-fifth);
+}

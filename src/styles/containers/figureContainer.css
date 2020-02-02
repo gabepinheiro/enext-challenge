@@ -1,7 +1,8 @@
 .card__containerFigure{
-  width:500px;
-  height: 300px;
+  width:600px;
+  height: 400px;
   position: relative;
+  display: block;
 }
 
 .card__caption {
@@ -14,5 +15,7 @@
 }
 
 .card__caption  span{
-    padding:20px;
+    background-color: #fff;
+    display:block;
+    padding: 5px;
 }

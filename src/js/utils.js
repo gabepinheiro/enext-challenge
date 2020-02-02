@@ -1,11 +1,7 @@
 const saveLocalStorage = (key, value) => {
   return new Promise((resolve, reject) => {
     try {
-      const dataStorage = JSON.parse(localStorage.getItem(key));
-
-      const newDataStorage = [value, ...dataStorage];
-
-      localStorage.setItem(key, JSON.stringify(newDataStorage));
+      localStorage.setItem(key, JSON.stringify(value));
 
       resolve(true);
     } catch (error) {

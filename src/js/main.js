@@ -6,7 +6,7 @@ import { selectBreeds, selectFonts, selectColors } from './components';
 
 class Challenge {
   constructor() {
-    this.listMyDogs = localStorage.getItem('mydogs') || [];
+    this.listMyDogs = JSON.parse(localStorage.getItem('mydogs')) || [];
 
     this.formEl = document.querySelector('.form');
     this.inputEl = document.querySelector('#nameDog');

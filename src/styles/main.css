@@ -20,6 +20,7 @@
 @import './components/fieldBox.css';
 @import './components/select.css';
 @import './components/btn.css';
+@import './components/title.css';
 
 /* trumps */
 @import './trumps/colors.css';

@@ -9,13 +9,17 @@ export const selectBreeds = listBreed => {
 };
 
 export const selectFonts = () => {
-  const markup = [
+  const fonts = [
     "'Nunito Sans', sans-serif",
     "'Bangers', sans-serif",
     "'Permanent Marker', sans-serif",
     "'Oleo Script', sans-serif",
     "'Lobster', sans-serif",
-  ].map((font, index) => `<option value="${font}">Font ${index + 1}</option>`);
+  ];
+
+  const markup = fonts.map(
+    (font, index) => `<option value="${font}">Font ${index + 1}</option>`
+  );
 
   // elSelect.innerHTML = `<optgroup>${markup}</optgroup>`;
   return `<optgroup>${markup}</optgroup>`;

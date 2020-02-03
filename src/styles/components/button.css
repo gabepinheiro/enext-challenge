@@ -1,14 +1,11 @@
-.form__button{
+.button{
   background-color: var(--color-second);
-  border-radius:20px;
-  border:1px solid #e6e5e5;
   color:#fff;
   text-transform: capitalize;
   font-weight: bold;
-  font-size: 1rem;
   cursor:pointer;
 }
 
-.form__button:hover{
+.button:hover{
   opacity: 0.7;
 }

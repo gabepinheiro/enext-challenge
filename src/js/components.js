@@ -1,15 +1,17 @@
 export const renderMyDogsList = listDogs => {
   const markup = listDogs.map(dog => {
     return `
-      <li class="myDogs__item">
-         <figure class="myDogs__figure">
-            <img src="${dog.img}" class="myDogs__image" />
-            <figcaption class="myDogs__caption">
+      <li class="item-list">
+        <div class="card-dog">
+         <figure class="figure">
+            <img src="${dog.img}" class="image" />
+            <figcaption class="caption">
                 <span style="font-family:${dog.styles.font}"class="${dog.styles.color}">
                   ${dog.name}
                 </span>
             </figcaption>
          </figure>
+        </div>
       </li>   
     `;
   });

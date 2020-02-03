@@ -1,0 +1,34 @@
+.main-content{
+  display: flex;
+  margin-bottom: 45px;
+}
+
+.main-content > .card-dog{
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content > .card-dog > .figure{
+  max-width:100%;
+  height: 400px;
+  position: relative;
+  display: block;
+  
+}
+
+.main-content > .card-dog  .caption {
+  position: absolute;
+  bottom: 0;
+  left:15px;
+  bottom:15px;
+  font-size: 40px;
+}
+
+
+.main-content > .card-dog  .captiontext{
+  display: inline-block;
+  padding:0 5px;
+}
+

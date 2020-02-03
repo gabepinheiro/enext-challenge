@@ -10,19 +10,21 @@
 @import './base/elements.css';
 
 /* containers */
-@import './containers/wrapperChallenge.css';
-@import './containers/mainContent.css';
+@import './containers/app-challenge.css';
+@import './containers/main-content.css';
 @import './containers/form.css';
-@import './containers/fieldsContainer.css';
-@import './containers/card.css';
-@import './containers/figureContainer.css';
+@import './containers/my-dogs.css';
 
 /* components */
-@import './components/fieldBox.css';
-@import './components/select.css';
-@import './components/btn.css';
-@import './components/title.css';
-@import './components/legendImage.css';
+
+@import './components/field-box.css'; 
+@import './components/label.css';
+@import './components/input.css';
+@import './components/button.css';
+@import './components/heading.css';
+@import './components/figure.css';
+@import './components/caption.css';
+
 
 /* trumps */
 @import './trumps/colors.css';

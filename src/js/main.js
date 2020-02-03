@@ -13,23 +13,27 @@ class Challenge {
   constructor() {
     this.listMyDogs = JSON.parse(localStorage.getItem('mydogs')) || [];
 
-    this.$form = document.querySelector('.form');
+    this.$form = document.querySelector('.main-form');
     this.$input = document.querySelector('#nameDog');
     this.$breeds = document.querySelector('#breeds');
     this.$colors = document.querySelector('#colorFont');
     this.$fonts = document.querySelector('#font');
-    this.$cardImage = document.querySelector('.card__image');
-    this.$caption = document.querySelector('.card__caption span');
-    this.$ulMyDogs = document.querySelector('.myDogs__listContainer > ul');
+    this.$image = document.querySelector('.image');
+    this.$caption = document.querySelector('.captiontext');
+    this.$ulMyDogs = document.querySelector('.my-dogs > .list');
   }
 
   async init() {
     this.addListeners();
 
-    const response = await api.getBreeds();
-    this.listBreeds = response;
+    try {
+      const response = await api.getBreeds();
 
-    this.$breeds.innerHTML = selectBreeds(Object.keys(this.listBreeds));
+      this.$breeds.innerHTML = selectBreeds(Object.keys(response));
+    } catch (error) {
+      alert(error);
+    }
+
     this.$fonts.innerHTML = selectFonts();
     this.$colors.innerHTML = selectColors();
 
@@ -41,7 +45,7 @@ class Challenge {
 
     const dog = {
       name: this.$input.value,
-      img: this.$cardImage.src,
+      img: this.$image.src,
       styles: {
         font: this.$fonts.value,
         color: this.$colors.value,
@@ -53,9 +57,19 @@ class Challenge {
 
     const response = await saveLocalStorage('mydogs', this.listMyDogs);
 
-    if (response) alert('Salvo com Sucesso');
+    if (response) alert('Cachorro gravado com Sucesso!');
 
+    this.clearForm();
     this.updateListMyDogs();
+  }
+
+  clearForm() {
+    this.$input.value = '';
+    this.$breeds.value = '';
+    this.$colors.value = '';
+    this.$fonts.value = '';
+    this.$image.src = '';
+    this.$caption.innerText = '';
   }
 
   updateListMyDogs() {
@@ -74,9 +88,9 @@ class Challenge {
   async handleChangeImageBreed(e) {
     const breed = e.target.value;
 
-    const image = await api.getImageBreed(breed);
+    const dogImage = await api.getImageBreed(breed);
 
-    this.$cardImage.src = image.message;
+    this.$image.src = dogImage.message;
   }
 
   handleChangeFont(e) {
